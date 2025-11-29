@@ -1,0 +1,34 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+    <div class="navbar-container">
+        <!-- Logo -->
+        <div class="navbar-brand" (click)="irAInicio()">
+            <img src="assets/imgs/logo_blanco.png" alt="Logo Deepcardio" class="navbar-logo">
+        </div>
+
+        <!-- Menú principal - Horizontal en desktop -->
+        <div class="navbar-menu" [class.active]="menuOpen">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="irAInicio()" [class.active]="isActive('/Inicio')">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="irAQueEs()" [class.active]="isActive('/QueEs')">¿Qué es?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="irAContacto()" [class.active]="isActive('/Contacto')">Contacto</a>
+                </li>
+            </ul>
+
+            <!-- Botón de login -->
+            <button class="navbar-btn" (click)="irAIniciarSesion()">
+        <i class="fas fa-user"></i>
+        <span>Iniciar sesión</span>
+      </button>
+        </div>
+
+        <!-- Menú hamburguesa - Solo en mobile -->
+        <button class="navbar-toggler" (click)="toggleMenu()" aria-label="Toggle navigation">
+      <i class="fas" [class.fa-bars]="!menuOpen" [class.fa-times]="menuOpen"></i>
+    </button>
+    </div>
+</nav>

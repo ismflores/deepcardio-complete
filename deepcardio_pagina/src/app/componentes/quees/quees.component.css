@@ -1,0 +1,364 @@
+/* Estilos Base */
+
+.quees-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+
+/* Hero Section */
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../../assets/imgs/cardiologo.jpg') center/cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+
+/* Info Section */
+
+.info-section {
+    background-color: #000000;
+    padding: 80px 10%;
+}
+
+.info-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-text {
+    flex: 1;
+}
+
+.section-tag {
+    display: inline-block;
+    background-color: #c71010;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.info-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.info-text p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+.info-image {
+    flex: 1;
+    position: relative;
+}
+
+.dicom-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.dicom-image:hover {
+    transform: scale(1.02);
+}
+
+
+/* Cards Section */
+
+.cards-section {
+    background-color: #111111;
+    padding: 80px 10%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-card {
+    border-top: 4px solid #c71010;
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c71010, #e63939);
+    z-index: 2;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #c71010;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+
+/* Technical Section */
+
+.technical-section {
+    background-color: #000000;
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.technical-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.technical-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.technical-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.technical-item {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 30px 20px;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.warning-item {
+    border-top: 4px solid #ff9800;
+}
+
+.danger-item {
+    border-top: 4px solid #c71010;
+}
+
+.tech-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.tech-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tech-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+/* Benefits Section */
+
+.benefits-section {
+    background-color: #111111;
+    padding: 80px 10%;
+}
+
+.benefits-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.benefits-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.benefit-item i {
+    color: #c71010;
+    font-size: 1.5rem;
+    margin-top: 3px;
+}
+
+.benefit-item p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* CTA Section */
+
+.cta-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../../../assets/imgs/cardiologo2.jpg') center/cover no-repeat;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #c71010, #e63939);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #a50d0d, #c71010);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(199, 16, 16, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .info-content {
+        flex-direction: column;
+    }
+    .info-text,
+    .info-image {
+        width: 100%;
+    }
+    .technical-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .technical-item {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}

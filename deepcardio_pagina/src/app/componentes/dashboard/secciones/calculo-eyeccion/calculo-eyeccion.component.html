@@ -1,0 +1,159 @@
+<section class="improved-section">
+  <h2><i class="fas fa-heartbeat"></i>Cálculo de Fracción de Eyección del Ventrículo Izquierdo (FEVI)</h2>
+  <div class="calculo-eyeccion-container">
+    <div class="dicom-workflow">
+      <!-- Cargar Estudio -->
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fas fa-upload"></i>1. Cargar estudio</h3>
+        </div>
+        <div class="card-body">
+          <div class="upload-area" (click)="seleccionarArchivo()" (dragover)="permitirArrastrar($event)" (drop)="soltarImagen($event)" [class.drag-over]="isDragging">
+            <input type="file" id="fileInputRVEF" accept=".dcm" #archivoRvef (change)="seleccionarImagenRVEF($event)" hidden multiple>
+            <div class="upload-content">
+              <i class="fas fa-upload upload-icon"></i>
+              <p>Arrastra archivos DICOM aquí<br>o haz clic para seleccionar<br>Selecciona todos los cortes de la serie</p>
+            </div>
+          </div>
+          <div class="file-info" *ngIf="nombreArchivoRVEF">
+            <i class="fas fa-file"></i>
+            <span>{{nombreArchivoRVEF}}</span>
+            <span>{{rvefResults ? 'Analizado' : 'Listo para analizar'}}</span>
+          </div>
+          <div class="improved-buttons">
+            <button class="btn" (click)="enviarImagenRVEF($event)" [disabled]="!imagenSeleccionadaRVEF || analysisInProgress">
+              <i class="fas fa-heartbeat"></i> Analizar FEVI
+            </button>
+            <button class="btn-secundario" *ngIf="analysisInProgress" disabled>
+              <i class="fas fa-spinner fa-spin"></i> Procesando...
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visualización -->
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fas fa-image"></i>2. Visualización</h3>
+        </div>
+        <div class="card-body viewer-body"> 
+          <div class="dicom-viewer-container">
+            <div class="dicom-viewer-wrapper">
+              <div #dicomViewer class="dicom-viewer" oncontextmenu="return false"></div>
+              <div *ngIf="!imagenCargada" class="results-placeholder">
+                <i class="fas fa-image"></i>
+                <p>El estudio DICOM aparecerá aquí una vez que se cargue.</p>
+              </div>
+            </div>
+            
+            <!-- Controles de navegación -->
+            <div class="dicom-controls" *ngIf="imagenCargada && totalImages > 0">
+              <div class="slice-controls">
+                <button (click)="previousImage()" [disabled]="currentImageIndex === 0">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slice-info">
+                  {{currentImageIndex + 1}} / {{totalImages}}
+                </div>
+                <button (click)="nextImage()" [disabled]="currentImageIndex === totalImages - 1">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              
+              <div class="playback-controls" *ngIf="totalImages > 1">
+                <button (click)="togglePlayback()">
+                  <i class="fas" [class.fa-play]="!isPlaying" [class.fa-pause]="isPlaying"></i>
+                  {{isPlaying ? 'Pausar' : 'Reproducir'}}
+                </button>
+                <button (click)="changePlaybackSpeed(200)" [class.active]="playbackSpeed === 200">1x</button>
+                <button (click)="changePlaybackSpeed(100)" [class.active]="playbackSpeed === 100">2x</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="window-controls" *ngIf="imagenCargada">
+            <h4>Ajustes de Visualización</h4>
+            <div class="window-slider">
+              <label>Brillo (Window Center): {{ windowCenter }}</label>
+              <input type="range" [min]="windowCenterMin" [max]="windowCenterMax" [(ngModel)]="windowCenter" (input)="actualizarViewport()">
+            </div>
+            <div class="window-slider">
+              <label>Contraste (Window Width): {{ windowWidth }}</label>
+              <input type="range" [min]="windowWidthMin" [max]="windowWidthMax" [(ngModel)]="windowWidth" (input)="actualizarViewport()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resultados -->
+      <div class="card">
+        <div class="card-header">
+          <h3><i class="fas fa-chart-line"></i>3. Resultados</h3>
+        </div>
+        <div class="card-body">
+          <div *ngIf="rvefResults; else placeholder">
+            <div class="result-main-value">
+              <div class="rvef-value">{{ rvefResults.rvef_prediction.toFixed(1) }}%</div>
+              <div class="rvef-label">Fracción de Eyección del VI</div>
+              <div class="confidence-badge">{{ getConfidenceLevel(rvefResults.rvef_prediction) }}</div>
+            </div>
+            <div class="result-details">
+              <div class="detail-item">
+                <span class="detail-label">Ciclos analizados:</span>
+                <span class="detail-value">{{rvefResults.num_cycles}}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Calidad imagen:</span>
+                <span class="detail-value">Adecuada</span>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas #rvefChart></canvas>
+            </div>
+            <button class="btn" (click)="toggleAdvancedMetrics()">
+              <i class="fas fa-info-circle"></i> {{showAdvancedMetrics ? 'Ocultar' : 'Mostrar'}} detalles por paciente
+            </button>
+            <div class="advanced-metrics" *ngIf="showAdvancedMetrics">
+              <table class="improved-table">
+                <thead>
+                  <tr>
+                    <th>Ciclo</th>
+                    <th>RVEF</th>
+                    <th>VDV (ml)</th>
+                    <th>VDS (ml)</th>
+                    <th>SV (ml)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cycle of rvefResults.cycle_details">
+                    <td>{{cycle.cycle_number}}</td>
+                    <td>{{cycle.rvef.toFixed(1)}}%</td>
+                    <td>{{cycle.edv.toFixed(1)}}</td>
+                    <td>{{cycle.esv.toFixed(1)}}</td>
+                    <td>{{(cycle.edv - cycle.esv).toFixed(1)}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="export-options">
+              <button class="btn"><i class="fas fa-file-pdf"></i> Exportar PDF</button>
+              <button class="btn"><i class="fas fa-file-export"></i> Exportar datos</button>
+            </div>
+          </div>
+          <ng-template #placeholder>
+            <div class="results-placeholder">
+              <i class="fas fa-info-circle"></i>
+              <p>Los resultados del análisis aparecerán aquí<br>Haz clic en "Analizar FEVI" para procesar el estudio</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-overlay" *ngIf="mostrarMensajeAnalisis">
+    <div class="loading-message">
+      <p>Procesando análisis, por favor espera...</p>
+    </div>
+  </div>
+</section>

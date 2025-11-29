@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <h2>Deepcardio</h2>
+    <nav>
+      <ul>
+        <li [class.active]="seccionActiva === 'pacientes'" (click)="seleccionarSeccion('pacientes')"><i class="fas fa-users"></i> Gestión de Pacientes</li>
+        <li [class.active]="seccionActiva === 'ecg'" (click)="seleccionarSeccion('ecg')"><i class="fas fa-heartbeat"></i> Clasificación ECG</li>
+        <li [class.active]="seccionActiva === 'calculo-eyeccion'" (click)="seleccionarSeccion('calculo-eyeccion')"><i class="fas fa-chart-line"></i> Cálculo Eyección</li>
+        <li [class.active]="seccionActiva === 'analisis-imagenes'" (click)="seleccionarSeccion('analisis-imagenes')"><i class="fas fa-image"></i> Análisis de Imágenes</li>
+        <li [class.active]="seccionActiva === 'historial'" (click)="seleccionarSeccion('historial')"><i class="fas fa-history"></i> Historial de Análisis</li>
+        <li [class.active]="seccionActiva === 'reportes'" (click)="seleccionarSeccion('reportes')"><i class="fas fa-file-medical"></i> Reportes Médicos</li>
+      </ul>
+    </nav>
+    <button class="logout-button" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+  </aside>
+  <main class="main-content">
+    <h1>Panel de Diagnóstico</h1>
+    <router-outlet></router-outlet>
+
+    
+  </main>
+</div>

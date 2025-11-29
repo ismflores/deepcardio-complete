@@ -1,0 +1,306 @@
+/* Sección de pacientes */
+.improved-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.improved-section h2 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* Tabla de pacientes */
+.improved-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.improved-table th {
+  background-color: #c71010;
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  font-weight: 500;
+  border-bottom: 2px solid #a50d0d;
+}
+
+.improved-table td {
+  padding: 15px;
+  text-align: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
+  vertical-align: middle;
+}
+
+.improved-table tr:hover td {
+  background-color: #f5f5f5;
+}
+
+.pacientes-tabla td:nth-child(4) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.pacientes-tabla td.acciones {
+  width: 200px;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.acciones-botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.pacientes-tabla .acciones-botones .btn-actualizar,
+.pacientes-tabla .acciones-botones .btn-eliminar {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.pacientes-tabla .acciones-botones .btn-actualizar {
+  color: #ffcc00;
+  background: rgba(255, 204, 0, 0.2);
+}
+
+.pacientes-tabla .acciones-botones .btn-eliminar {
+  color: #c71010;
+  background: rgba(199, 16, 16, 0.2);
+}
+
+.pacientes-tabla .acciones-botones .btn-actualizar:hover {
+  background: rgba(255, 204, 0, 0.5);
+}
+
+.pacientes-tabla .acciones-botones .btn-eliminar:hover {
+  background: rgba(199, 16, 16, 0.5);
+}
+
+/* Formulario en popup */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  width: 400px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.popup-content-form h3 {
+  color: #c71010;
+  margin-bottom: 20px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.popup-content-form h3 i {
+  font-size: 28px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label i {
+  color: #c71010;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #c71010;
+  box-shadow: 0 0 5px rgba(199, 16, 16, 0.3);
+}
+
+.form-input.invalid {
+  border-color: #ff4444;
+}
+
+select.form-input {
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23c71010" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>') no-repeat right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.form-buttons .btn,
+.form-buttons .btn-cerrar {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.form-buttons .btn {
+  background: #c71010;
+  color: #ffffff;
+}
+
+.form-buttons .btn:hover {
+  background: #a50d0d;
+  transform: translateY(-2px);
+}
+
+.form-buttons .btn-cerrar {
+  background: #ffffff;
+  color: #c71010;
+  border: 2px solid #c71010;
+}
+
+.form-buttons .btn-cerrar:hover {
+  background: #f8f8f8;
+  transform: translateY(-2px);
+}
+
+/* Botones generales */
+.btn,
+.btn-secundario,
+.btn-cerrar {
+  background: #c71010;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn:hover,
+.btn-secundario:hover,
+.btn-cerrar:hover {
+  background: #a50d0d;
+}
+
+.btn-secundario:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .improved-table th,
+  .improved-table td {
+    padding: 10px;
+  }
+
+  .popup-content-form {
+    width: 90%;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+}
+
+.popup-analisis {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-content-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.improved-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.improved-table th, .improved-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}

@@ -1,0 +1,28 @@
+<aside class="sidebar">
+  <h2>Deepcardio</h2>
+  <nav>
+    <ul>
+      <li (click)="seleccionarSeccion('pacientes')" [class.active]="seccionActiva === 'pacientes'">
+        <i class="bi bi-person-fill"></i> Gestión de Pacientes
+      </li>
+      <li (click)="seleccionarSeccion('ecg')" [class.active]="seccionActiva === 'ecg'">
+        <i class="bi bi-activity"></i> Clasificación ECG
+      </li>
+      <li (click)="seleccionarSeccion('calculoEyeccion')" [class.active]="seccionActiva === 'calculoEyeccion'">
+        <i class="bi bi-heart-pulse-fill"></i> Cálculo Eyección
+      </li>
+      <li (click)="seleccionarSeccion('analisis')" [class.active]="seccionActiva === 'analisis'">
+        <i class="bi bi-bar-chart-line-fill"></i> Análisis de Imágenes
+      </li>
+      <li (click)="seleccionarSeccion('historial')" [class.active]="seccionActiva === 'historial'">
+        <i class="bi bi-clock-history"></i> Historial de Análisis
+      </li>
+      <li (click)="seleccionarSeccion('reportes')" [class.active]="seccionActiva === 'reportes'">
+        <i class="bi bi-file-earmark-medical-fill"></i> Reportes Médicos
+      </li>
+    </ul>
+  </nav>
+  <button (click)="logout()" class="logout-button">
+    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+  </button>
+</aside>

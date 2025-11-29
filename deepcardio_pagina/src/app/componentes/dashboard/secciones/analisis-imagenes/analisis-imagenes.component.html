@@ -1,0 +1,75 @@
+<section class="improved-section">
+  <h2>Análisis de Imágenes</h2>
+
+  <div class="select-row">
+    <div class="select-item">
+      <label class="label-select">Selecciona un paciente:</label>
+      <select class="styled-select" [(ngModel)]="pacienteSeleccionadoId" (change)="onSeleccionarPaciente($event)">
+        <option value="" disabled>Selecciona un paciente</option>
+        <option *ngFor="let paciente of listaPacientes" [value]="paciente.id">{{ paciente.nombre }}</option>
+      </select>
+    </div>
+    <div class="select-item">
+      <label class="label-select">Tipo de Análisis:</label>
+      <select class="styled-select" [(ngModel)]="tipoAnalisis">
+        <option value="Anomalías">Anomalías</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="upload-box" (click)="seleccionarArchivo()" (dragover)="permitirArrastrar($event)" (drop)="soltarImagen($event)" [class.drag-over]="isDragging">
+    <input type="file" id="fileInput" accept="image/*" multiple (change)="cargarImagen($event)" hidden>
+    <div class="upload-label" *ngIf="imagenesCargadas.length === 0">
+      <i class="fas fa-upload"></i>
+      <p>Arrastra aquí o haz clic para subir hasta 5 imágenes</p>
+    </div>
+    <div class="images-preview" *ngIf="imagenesCargadas.length > 0">
+      <div class="image-wrapper" *ngFor="let imagen of imagenesCargadas; let i = index">
+        <img class="imagen-preview" [src]="imagen" alt="Imagen cargada">
+        <button class="btn-eliminar" (click)="eliminarImagen(i, $event)">X</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="improved-buttons">
+    <button class="btn" (click)="procesarImagen()" [disabled]="!pacienteSeleccionadoId || imagenesCargadas.length === 0">
+      <i class="fas fa-search"></i> Analizar Imagen
+    </button>
+    <button class="btn-secundario" (click)="guardarAnalisis()" [disabled]="!resultadoAnalisis">
+      <i class="fas fa-save"></i> Guardar en Historial
+    </button>
+  </div>
+
+  <div class="charts-container" *ngIf="resultadoAnalisis">
+    <h3>Resultados del Análisis</h3>
+    <p>{{ resultadoAnalisis }}</p>
+    <div class="chart-row">
+      <div class="chart-card">
+        <canvas #anomaliasChart></canvas>
+        <h4>Anomalías Detectadas</h4>
+      </div>
+      <div class="chart-card">
+        <canvas #severidadChart></canvas>
+        <h4>Nivel de Severidad</h4>
+      </div>
+      <div class="chart-card">
+        <canvas #tendenciaChart></canvas>
+        <h4>Tendencia de Anomalías</h4>
+      </div>
+      <div class="chart-card">
+        <canvas #factoresChart></canvas>
+        <h4>Distribución de Factores de Riesgo</h4>
+      </div>
+    </div>
+    <div class="improved-buttons">
+      <button class="btn" (click)="guardarAnalisis()"><i class="fas fa-save"></i> Guardar Análisis</button>
+    </div>
+  </div>
+
+  <div class="loading-overlay" *ngIf="mostrarMensajeAnalisis">
+    <div class="loading-message">
+      <p>Iniciando análisis, este proceso puede tardar unos minutos...</p>
+    </div>
+  </div>
+</section>

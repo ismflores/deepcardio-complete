@@ -1,0 +1,24 @@
+# Entorno virtual
+entorno-prueba/
+venv/
+.env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+#documentaciom
+echonet.egg-info/
+
+# Jupyter
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db

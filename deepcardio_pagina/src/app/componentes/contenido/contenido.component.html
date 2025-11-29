@@ -1,0 +1,62 @@
+<!-- Contenido actual -->
+<div class="contenido-container">
+    <div class="contenido-filtro"></div>
+    <section class="hero">
+        <h1 class="titulo" style="font-weight: bold;">Deepcardio</h1>
+        <div class="texto-hero">
+            <p>
+                Deepcardio transforma la forma en que se analiza la salud del corazón. Con tecnología de vanguardia, detectamos anomalías para prevenir enfermedades antes de que se conviertan en un problema.
+            </p>
+        </div>
+
+        <div class="buttons-hero">
+            <button class="btn-hero-register pulse-animation" (click)="irARegistrarse()">Registrarse</button>
+        </div>
+    </section>
+</div>
+
+<!-- Sección Información mejorada -->
+<div class="informacion-container">
+    <div class="informacion-texto">
+        <p class="categoria">Innovación</p>
+        <h2 class="titulo-informacion">Orientada a Médicos</h2>
+        <p class="descripcion">
+            Nuestra herramienta innovadora está diseñada específicamente para médicos cardiólogos, facilitando el diagnóstico y tratamiento de enfermedades del corazón. Con características avanzadas y una interfaz intuitiva, optimiza la atención al paciente y mejora
+            los resultados clínicos.
+        </p>
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">+95%</span>
+                <span class="stat-label">Precisión</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Disponibilidad</span>
+            </div>
+        </div>
+    </div>
+    <div class="informacion-imagen">
+        <img src="../../../assets/imgs/imagen_fx.jpg" alt="Cardiólogo analizando imagen">
+    </div>
+</div>
+
+<!-- Sección Proximamente mejorada -->
+<div class="proximamente-container">
+    <video autoplay muted loop playsinline class="video-background">
+        <source src="../../../assets/imgs/proximamente.mp4" type="video/mp4">
+        Tu navegador no soporta videos.
+    </video>
+    <div class="proximamente-content">
+        <div class="newsletter-form">
+            <h2>PRÓXIMAMENTE</h2>
+            <p>Estamos trabajando en nuevas funciones para mejorar la experiencia de nuestros usuarios.</p>
+            <div class="newsletter-input">
+                <input type="email" placeholder="ejemplo@dominio.com" class="email-input" [(ngModel)]="email">
+                <button class="notify-btn" (click)="handleNotify()">Notificarme</button>
+            </div>
+            <div *ngIf="mensaje" [ngClass]="{'mensaje-exito': tipoMensaje === 'exito', 'mensaje-error': tipoMensaje === 'error'}">
+                {{ mensaje }}
+
+            </div>
+        </div>
+    </div>

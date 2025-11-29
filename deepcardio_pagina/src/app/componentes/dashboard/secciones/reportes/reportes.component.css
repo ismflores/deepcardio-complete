@@ -1,0 +1,63 @@
+/* Sección de reportes */
+.reportes-container {
+  background: #fff5f5;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #c71010;
+  margin-bottom: 20px;
+}
+
+.reportes-container h2 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.reportes-container p {
+  color: #000000;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Botones de acción */
+.improved-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.improved-buttons .btn,
+.improved-buttons .btn-secundario {
+  background: #c71010;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.improved-buttons .btn:hover,
+.improved-buttons .btn-secundario:hover {
+  background: #a50d0d;
+}
+
+.improved-buttons .btn-secundario:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .improved-buttons {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,43 @@
+<section class="improved-section">
+  <h2>Clasificación de ECG</h2>
+
+  <div class="select-row">
+    <div class="select-item">
+      <label class="label-select">Selecciona un paciente:</label>
+      <select class="styled-select" [(ngModel)]="pacienteSeleccionadoId" (change)="onSeleccionarPaciente($event)">
+        <option value="" disabled>Selecciona un paciente</option>
+        <option *ngFor="let paciente of listaPacientes" [value]="paciente.id">{{ paciente.nombre }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="upload-box" (click)="seleccionarArchivo()" (dragover)="permitirArrastrar($event)" (drop)="soltarImagen($event)">
+    <input type="file" id="fileInputECG" accept="image/*" (change)="seleccionarImagenECG($event)" hidden>
+    <div class="upload-label">
+      <i class="fas fa-upload"></i>
+      <p>Arrastra aquí o haz clic para subir una imagen ECG</p>
+    </div>
+  </div>
+
+  <p>Archivo seleccionado: {{ nombreArchivo }}</p>
+
+  <div class="improved-buttons">
+    <button class="btn" (click)="enviarImagenECG($event)" [disabled]="!imagenSeleccionada || !pacienteSeleccionadoId">
+      <i class="fas fa-heartbeat"></i> Analizar ECG
+    </button>
+    <button class="btn-secundario" (click)="guardarClasificacionECG()" [disabled]="!resultadoECG || !pacienteSeleccionadoId">
+      <i class="fas fa-save"></i> Guardar Clasificación
+    </button>
+  </div>
+
+  <div class="resultado" *ngIf="resultadoECG">
+    <h3>Resultado:</h3>
+    <p>{{ resultadoECG }}</p>
+  </div>
+
+  <div class="loading-overlay" *ngIf="mostrarMensajeAnalisis">
+    <div class="loading-message">
+      <p>Clasificando imagen ECG, espera un momento...</p>
+    </div>
+  </div>
+</section>

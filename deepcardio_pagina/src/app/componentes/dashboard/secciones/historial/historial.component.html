@@ -1,0 +1,23 @@
+<section class="improved-section">
+  <h2>Historial de Análisis</h2>
+  <div class="improved-card" *ngFor="let analisis of historial">
+    <p>{{ analisis.fecha }} - {{ analisis.tipo }} ({{ analisis.paciente }})</p>
+    <button class="btn" (click)="mostrarDetalles(analisis)">
+      <i class="fas fa-eye"></i> Ver Detalles
+    </button>
+  </div>
+  <p *ngIf="historial.length === 0">No hay análisis en el historial.</p>
+
+  <div class="popup" *ngIf="mostrarPopup">
+    <div class="popup-content">
+      <h3>Detalles del Análisis</h3>
+      <p><strong>Fecha:</strong> {{ analisisSeleccionado?.fecha }}</p>
+      <p><strong>Paciente:</strong> {{ analisisSeleccionado?.paciente }}</p>
+      <p><strong>Tipo:</strong> {{ analisisSeleccionado?.tipo }}</p>
+      <p><strong>Resultado:</strong> {{ analisisSeleccionado?.resultado }}</p>
+      <button class="btn-cerrar" (click)="cerrarPopup()">
+        <i class="fas fa-times"></i> Cerrar
+      </button>
+    </div>
+  </div>
+</section>

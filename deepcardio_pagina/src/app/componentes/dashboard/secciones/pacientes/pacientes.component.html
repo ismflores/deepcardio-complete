@@ -1,0 +1,125 @@
+<section class="improved-section">
+  <h2>Gestión de Pacientes</h2>
+  <button class="btn" (click)="mostrarFormularioPaciente()">
+    <i class="fas fa-user-plus"></i> Agregar Paciente
+  </button>
+
+  <table class="improved-table pacientes-tabla">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Género</th>
+        <th>Historial</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paciente of listaPacientes">
+        <td>{{ paciente.nombre }}</td>
+        <td>{{ paciente.edad }}</td>
+        <td>{{ paciente.genero }}</td>
+        <td>
+          <button class="btn" (click)="verHistorialPaciente(paciente)">
+            <i class="fas fa-history"></i> Ver Historial
+          </button>
+        </td>
+        <td class="acciones">
+          <div class="acciones-botones">
+            <button class="btn-actualizar" (click)="actualizarPaciente(paciente)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn-eliminar" (click)="eliminarPaciente(paciente.id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="listaPacientes.length === 0">
+        <td colspan="5">No hay pacientes registrados.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulario de registro/edición -->
+  <div class="popup-form formulario-paciente" *ngIf="mostrarFormulario">
+    <div class="popup-content-form">
+      <h3>
+        <i class="fas fa-user-plus"></i> {{ modoEdicion ? 'Actualizar Paciente' : 'Registrar Paciente' }}
+      </h3>
+
+      <!-- Nombre -->
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Nombre:</label>
+        <input
+          type="text"
+          class="form-input"
+          [(ngModel)]="nuevoPaciente.nombre"
+          [class.invalid]="!validarNombre(nuevoPaciente.nombre) && mostrarFormulario"
+          placeholder="Ej. Juan Pérez"
+        />
+      </div>
+
+      <!-- Edad -->
+      <div class="form-group">
+        <label><i class="fas fa-calendar-alt"></i> Edad:</label>
+        <input
+          type="number"
+          class="form-input"
+          [(ngModel)]="nuevoPaciente.edad"
+          [class.invalid]="(nuevoPaciente.edad <= 0 || nuevoPaciente.edad > 100) && mostrarFormulario"
+          min="1"
+          max="100"
+          placeholder="Ej. 45"
+        />
+      </div>
+
+      <!-- Género -->
+      <div class="form-group">
+        <label><i class="fas fa-venus-mars"></i> Género:</label>
+        <select
+          class="form-input"
+          [(ngModel)]="nuevoPaciente.genero"
+          [class.invalid]="!nuevoPaciente.genero && mostrarFormulario"
+        >
+          <option value="" disabled>Selecciona un género</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+
+      <div class="form-buttons">
+        <button class="btn" (click)="guardarPaciente()">
+          {{ modoEdicion ? 'Actualizar' : 'Registrar' }}
+        </button>
+        <button class="btn-cerrar" (click)="cerrarFormulario()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup de historial de análisis -->
+  <div class="popup-analisis" *ngIf="mostrarPopup && analisisSeleccionado.length > 0">
+    <div class="popup-content-form">
+      <h3><i class="fas fa-history"></i> Historial de análisis</h3>
+      <table class="improved-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let analisis of analisisSeleccionado">
+            <td>{{ analisis.fecha }}</td>
+            <td>{{ analisis.tipo }}</td>
+            <td>{{ analisis.resultado }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-buttons">
+        <button class="btn-cerrar" (click)="cerrarPopup()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</section>

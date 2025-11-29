@@ -1,0 +1,19 @@
+# Ignorar la carpeta generada por ng build
+dist/
+
+.angular/
+
+# Ignorar dependencias
+node_modules/
+
+# Ignorar archivos de configuración local
+*.log
+npm-debug.log*
+package-lock.json
+
+# Ignorar archivos temporales
+*.tmp
+*.swp
+
+# Ignorar archivos de entorno local (si usas variables de entorno)
+.env

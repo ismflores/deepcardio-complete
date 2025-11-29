@@ -1,0 +1,99 @@
+<div class="contacto-container">
+    <div class="contacto-card">
+        <div class="contacto-header">
+            <!--<img src="../../../assets/imgs/logo-medical.png" alt="Logo Deepcardio" class="contacto-logo">-->
+            <h1 class="contacto-title">Contáctanos</h1>
+            <p class="contacto-subtitle">Estamos aquí para responder tus preguntas y escuchar tus sugerencias</p>
+        </div>
+
+        <form [formGroup]="contactoForm" (ngSubmit)="enviarFormulario()" class="contacto-form">
+            <!-- Nombre Completo -->
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <div class="input-container">
+                    <i class="fas fa-user input-icon"></i>
+                    <input formControlName="nombre" id="nombre" type="text" placeholder="Tu nombre completo" required>
+                </div>
+                <div class="error-message" *ngIf="contactoForm.get('nombre')?.invalid && contactoForm.get('nombre')?.touched">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>{{ getErrorMessage('nombre') }}</p>
+                </div>
+            </div>
+
+            <!-- Correo Electrónico -->
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <div class="input-container">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input formControlName="email" id="email" type="email" placeholder="ejemplo@dominio.com" required>
+                </div>
+                <div class="error-message" *ngIf="contactoForm.get('email')?.invalid && contactoForm.get('email')?.touched">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>{{ getErrorMessage('email') }}</p>
+                </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="form-group">
+                <label for="telefono">Teléfono <span class="opcional">(Opcional)</span></label>
+                <div class="input-container">
+                    <i class="fas fa-phone input-icon"></i>
+                    <input formControlName="telefono" id="telefono" type="tel" placeholder="10 dígitos">
+                </div>
+                <div class="error-message" *ngIf="contactoForm.get('telefono')?.invalid && contactoForm.get('telefono')?.touched">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>{{ getErrorMessage('telefono') }}</p>
+                </div>
+            </div>
+
+            <!-- Preferencia de Contacto -->
+            <div class="form-group">
+                <label>¿Cómo prefieres ser contactado?</label>
+                <div class="opciones-contacto">
+                    <label class="radio-option">
+                        <input type="radio" formControlName="metodoContacto" value="email">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Correo Electrónico</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" formControlName="metodoContacto" value="telefono">
+                        <span class="radio-checkmark"></span>
+                        <span class="radio-label">Teléfono</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Mensaje -->
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <div class="textarea-container">
+                    <textarea formControlName="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    <i class="fas fa-comment textarea-icon"></i>
+                </div>
+                <div class="error-message" *ngIf="contactoForm.get('mensaje')?.invalid && contactoForm.get('mensaje')?.touched">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>{{ getErrorMessage('mensaje') }}</p>
+                </div>
+            </div>
+
+            <!-- Botón Enviar -->
+            <button type="submit" class="submit-button" [disabled]="contactoForm.invalid || enviando">
+                <span *ngIf="!enviando">Enviar Mensaje</span>
+                <span *ngIf="enviando">
+                    <i class="fas fa-spinner fa-spin"></i> Enviando...
+                </span>
+            </button>
+
+            <!-- Mensajes de estado -->
+            <div class="status-message success" *ngIf="mensajeExito">
+                <i class="fas fa-check-circle"></i>
+                <p>{{ mensajeExito }}</p>
+            </div>
+
+            <div class="status-message error" *ngIf="mensajeError">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>{{ mensajeError }}</p>
+            </div>
+        </form>
+    </div>
+</div>

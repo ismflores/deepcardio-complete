@@ -1,0 +1,251 @@
+/* Estilos base */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 150px;
+}
+
+.login-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('../../../assets/imgs/cardiologo2.jpg') no-repeat center center;
+    background-size: cover;
+    filter: grayscale(80%) contrast(100%) brightness(90%);
+    z-index: -2;
+}
+
+.login-container::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.738);
+    z-index: -1;
+}
+
+
+/* Tarjeta de login */
+
+.login-card {
+    margin-top: 5%;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: left;
+    z-index: 1;
+    width: 450px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.login-title {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+
+/* Formulario */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    transition: all 0.3s;
+}
+
+.login-form input:focus {
+    border-color: #c71010;
+    box-shadow: 0 0 0 2px rgba(199, 16, 16, 0.2);
+    outline: none;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Botón de login */
+
+.login-button {
+    background: #c71010;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.login-button:hover:not(:disabled) {
+    background: #a50d0d;
+    transform: translateY(-2px);
+}
+
+.login-button:disabled {
+    background: rgba(199, 16, 16, 0.5);
+    cursor: not-allowed;
+}
+
+.button-loading {
+    cursor: wait;
+}
+
+
+/* Mensajes de error */
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.backend-error {
+    background: rgba(255, 107, 107, 0.1);
+    border-left: 3px solid #ff6b6b;
+    padding: 0.75rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.backend-error i {
+    color: #ff6b6b;
+}
+
+.backend-error p {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+
+/* Footer */
+
+.login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-footer a {
+    color: #c71010;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Toggle password */
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: #c71010;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .login-container {
+        padding-top: 120px;
+        padding-bottom: 180px;
+    }
+    .login-card {
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 20px;
+    }
+}

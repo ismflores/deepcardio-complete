@@ -1,0 +1,53 @@
+<div class="registro-container">
+    <div class="registro-card">
+        <div class="registro-text">Registro</div>
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="registro-form">
+            <div>
+                <label for="nombre">Nombre(s)</label>
+                <input formControlName="nombre" type="text" id="nombre" placeholder="Nombre" required (keypress)="validarCaracteres($event)" (paste)="evitarPegado($event)">
+                <div class="error-message" *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
+                    <p>{{ getErrorMessage('nombre') }}</p>
+                </div>
+            </div>
+            <div>
+                <label for="apellidoPaterno">Apellido Paterno</label>
+                <input formControlName="apellidoPaterno" type="text" id="apellidoPaterno" placeholder="Apellido paterno" required (keypress)="validarCaracteres($event)" (paste)="evitarPegado($event)">
+                <div class="error-message" *ngIf="registroForm.get('apellidoPaterno')?.invalid && registroForm.get('apellidoPaterno')?.touched">
+                    <p>{{ getErrorMessage('apellidoPaterno') }}</p>
+                </div>
+            </div>
+            <div>
+                <label for="apellidoMaterno">Apellido Materno</label>
+                <input formControlName="apellidoMaterno" type="text" id="apellidoMaterno" placeholder="Apellido materno" (keypress)="validarCaracteres($event)" (paste)="evitarPegado($event)">
+                <div class="error-message" *ngIf="registroForm.get('apellidoMaterno')?.invalid && registroForm.get('apellidoMaterno')?.touched">
+                    <p>{{ getErrorMessage('apellidoMaterno') }}</p>
+                </div>
+            </div>
+            <div>
+                <label for="correo">Correo</label>
+                <input formControlName="correo" type="email" id="correo" placeholder="Example@domain.com" required (paste)="evitarPegado($event)">
+                <div class="error-message" *ngIf="registroForm.get('correo')?.invalid && registroForm.get('correo')?.touched">
+                    <p>{{ getErrorMessage('correo') }}</p>
+                </div>
+            </div>
+            <div>
+                <label for="confirmarCorreo">Confirmar correo</label>
+                <input formControlName="confirmarCorreo" type="email" id="confirmarCorreo" placeholder="Example@domain.com" required (paste)="evitarPegado($event)">
+                <div class="error-message" *ngIf="registroForm.get('confirmarCorreo')?.invalid && registroForm.get('confirmarCorreo')?.touched">
+                    <p>{{ getErrorMessage('confirmarCorreo') }}</p>
+                </div>
+            </div>
+            <div>
+                <label for="password">Contraseña</label>
+                <input formControlName="password" type="password" id="password" placeholder="Mínimo 8 caracteres con números y signos" required (paste)="evitarPegado($event)">
+                <div class="error-message" *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
+                    <p>{{ getErrorMessage('password') }}</p>
+                </div>
+            </div>
+            <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+        </form>
+        <div class="link-iniciar">
+            <p>¿Ya tienes una cuenta?</p>&nbsp;<a href="/IniciarSesion">Iniciar sesión</a>
+        </div>
+    </div>
+</div>

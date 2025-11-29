@@ -1,0 +1,178 @@
+.registro-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-left: 8%;
+    padding-top: 160px;
+    padding-bottom: 150px;
+}
+
+@media (max-width: 768px) {
+    .registro-container {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+        padding-top: 180px;
+        padding-bottom: 200px;
+    }
+    .registro-card {
+        width: 90%;
+        max-width: 500px;
+    }
+}
+
+.registro-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('../../../assets/imgs/cardiologo2.jpg') no-repeat center center;
+    background-size: cover;
+    filter: grayscale(80%) contrast(100%) brightness(90%);
+    z-index: -2;
+}
+
+.registro-container::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.738);
+    z-index: -1;
+}
+
+.registro-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: left;
+    z-index: 1;
+    width: 800px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.registro-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: start;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.registro-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.registro-form .full-width {
+    grid-column: span 2;
+}
+
+.registro-form label {
+    color: #FFFEFE;
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.registro-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.registro-form input:focus {
+    outline: none;
+    border-color: #c71010;
+    box-shadow: 0 0 0 2px rgba(199, 16, 16, 0.2);
+    transform: translateY(-1px);
+}
+
+.registro-form button {
+    width: 60%;
+    background: #c71010;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    grid-column: span 2;
+    box-shadow: 0 4px 12px rgba(199, 16, 16, 0.3);
+}
+
+.registro-form button:hover:not(:disabled) {
+    background: #a50e0e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(199, 16, 16, 0.4);
+}
+
+.registro-form button:disabled {
+    background: #c71010;
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.link-iniciar {
+    text-align: start;
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+.link-iniciar p {
+    color: #ffffff;
+    display: inline;
+}
+
+.link-iniciar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.link-iniciar a:hover {
+    color: #c71010;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.error-message p {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.error-message p::before {
+    content: "";
+    font-size: 12px;
+}
