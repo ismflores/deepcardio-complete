@@ -6,6 +6,7 @@ Resumen rápido: este repositorio contiene tres proyectos relacionados:
 - backend_fevi_flask — Procesamiento y segmentación de vídeo (Python + Flask + PyTorch)
 
 **Tecnologías principales:**
+
 ![Node.js](https://img.shields.io/badge/Node.js-%3E%3D14-brightgreen) ![Express](https://img.shields.io/badge/Express-4.x-lightgrey) ![Neon/Postgres](https://img.shields.io/badge/Neon%20(Postgres)-serverless-blue)![Angular](https://img.shields.io/badge/Angular-17-red) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)![Python](https://img.shields.io/badge/Python-3.10-blue) ![Flask](https://img.shields.io/badge/Flask-3.x-lightgrey) ![PyTorch](https://img.shields.io/badge/PyTorch-2.5.1-orange)![CUDA](https://img.shields.io/badge/CUDA-12.1-red) ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-blue)
 
 Estructura y propósito de cada carpeta
